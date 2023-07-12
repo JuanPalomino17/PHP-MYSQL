@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-07-2023 a las 22:38:22
+-- Tiempo de generación: 12-07-2023 a las 18:57:29
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `work_center_id` int(35) NOT NULL,
-  `entry_date` date NOT NULL
+  `name` varchar(255) DEFAULT NULL,
+  `work_center_id` int(11) DEFAULT NULL,
+  `entry_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -39,7 +39,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `work_center_id`, `entry_date`) VALUES
-(1, 'Juan Palomino', 123456, '2023-07-11');
+(1, 'Juan Palomino ', 1, '2023-07-11'),
+(2, 'Camila Cortez', 2, '2023-07-12'),
+(4, 'Laura Camila Polo', 2, '2023-07-12'),
+(5, 'Jesus Vallejo', 3, '2023-07-13'),
+(6, 'Martha Polo', 2, '2023-07-10');
 
 -- --------------------------------------------------------
 
@@ -49,15 +53,20 @@ INSERT INTO `users` (`id`, `name`, `work_center_id`, `entry_date`) VALUES
 
 CREATE TABLE `work_centers` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name_work` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `work_centers`
 --
 
-INSERT INTO `work_centers` (`id`, `name`) VALUES
-(1, 'Santa Marta');
+INSERT INTO `work_centers` (`id`, `name_work`) VALUES
+(1, 'Centro de Trabajo A'),
+(2, 'Centro de Trabajo B'),
+(3, 'Centro de Trabajo C'),
+(4, 'Centro de Trabajo B'),
+(5, 'Centro de Trabajo C'),
+(6, 'Centro de Trabajo B');
 
 --
 -- Índices para tablas volcadas
@@ -84,23 +93,23 @@ ALTER TABLE `work_centers`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `work_centers`
 --
 ALTER TABLE `work_centers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `work_centers`
+-- Filtros para la tabla `users`
 --
-ALTER TABLE `work_centers`
-  ADD CONSTRAINT `work_centers_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`work_center_id`) REFERENCES `work_centers` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
