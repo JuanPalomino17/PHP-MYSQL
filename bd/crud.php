@@ -1,13 +1,12 @@
 <?php
-include_once '../database/conexion.php';
+include_once 'bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 // Recepción de los datos enviados mediante POST desde el JS
 
 $entry_date = (isset($_POST['entry_date'])) ? $_POST['entry_date'] : '';
 $work_center = ( ($_POST['name_work'])) ? $_POST['name_work'] : '';
-$work_center_id = (isset($_POST['work_center_id'])) ? $_POST['work_center_id'] : '';
-$names = (isset($_POST['name'])) ? $_POST['name'] : '';
+$name = (isset($_POST['name'])) ? $_POST['name'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
