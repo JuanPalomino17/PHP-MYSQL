@@ -9,7 +9,7 @@ require_once "vistas/parte_superior.php";
   $objeto = new Conexion();
   $conexion = $objeto->Conectar();
 
-  $consulta = "SELECT * FROM users INNER JOIN work_centers ON users.work_center_id = work_centers.id";
+  $consulta = "SELECT users.id, users.names, users.work_center_id, users.entry_date, work_centers.name_work FROM users INNER JOIN work_centers ON users.work_center_id = work_centers.id";
   $resultado = $conexion->prepare($consulta);
   $resultado->execute();
   $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -43,9 +43,9 @@ require_once "vistas/parte_superior.php";
               ?>
                 <tr>
                   <td><?php echo $dat['id'] ?></td>
-                  <td><?php echo $dat['name'] ?></td>
-                  <td><?php echo $dat['entry_date'] ?></td>
+                  <td><?php echo $dat['names'] ?></td>
                   <td><?php echo $dat['name_work'] ?></td>
+                  <td><?php echo $dat['entry_date'] ?></td>
                   <td></td>
                 </tr>
               <?php
@@ -70,7 +70,7 @@ require_once "vistas/parte_superior.php";
           <div class="modal-body">
               <div class="form-group">
                 <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="name" required>
+                <input type="text" class="form-control" id="names" required>
               </div>
               <div class="form-group">
                 <label for="apellido" class="col-form-label">Fecha Ingreso:</label>
@@ -78,14 +78,14 @@ require_once "vistas/parte_superior.php";
               </div>
               <div class="form-group">
                 <label for="direccion" class="col-form-label">Name work:</label>
-                <input type="select" class="form-control" id="name_work" required>
                 <select type="select" class="form-control"name="name_work" id="name_work">
-                <?php
-               
-                        while ($resultado = $sql->fetch_assoc()) {
-                            echo "<option value='".$resultado['Id']."'>".$resultado['name_work']."</option>";
-                        }
-                ?>
+                <option value="">Seleccione una opcion</option>
+                <option value="1">Centro de trabajo A</option>
+                <option value="2">Centro de trabajo B</option>
+                <option value="3">Centro de trabajo C</option>
+                <option value="4">Centro de trabajo D</option>
+                <option value="5">Centro de trabajo E</option>
+                <option value="6">Centro de trabajo F</option>
                 </select>
               </div>
             </div>
@@ -120,5 +120,4 @@ require_once "vistas/parte_superior.php";
   </div>
   <!--FIN del cont principal-->
   <?php require_once "vistas/parte_inferior.php" ?>
-  <script src="../js/sweetalert.js"></script>
-  <script src="../js/xlsx.js"></script>
+  <script src="js/sweetalert.js"></script>
