@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-07-2023 a las 18:57:29
+-- Tiempo de generación: 13-07-2023 a las 02:23:17
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -29,21 +29,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `work_center_id` int(11) DEFAULT NULL,
-  `entry_date` date DEFAULT NULL
+  `names` varchar(255) NOT NULL,
+  `work_center_id` int(11) NOT NULL,
+  `entry_date` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `work_center_id`, `entry_date`) VALUES
+INSERT INTO `users` (`id`, `names`, `work_center_id`, `entry_date`) VALUES
 (1, 'Juan Palomino ', 1, '2023-07-11'),
-(2, 'Camila Cortez', 2, '2023-07-12'),
 (4, 'Laura Camila Polo', 2, '2023-07-12'),
 (5, 'Jesus Vallejo', 3, '2023-07-13'),
-(6, 'Martha Polo', 2, '2023-07-10');
+(17, 'luis manuel', 5, '2023-07-08'),
+(18, 'camilo s', 3, '2023-07-20'),
+(20, 'lorena', 3, '2023-07-21'),
+(23, 'paola', 3, '2023-07-28'),
+(24, 'leo ramos', 5, '2023-07-29'),
+(25, 'Carlo Torres', 5, '2023-07-05');
 
 -- --------------------------------------------------------
 
@@ -53,7 +57,7 @@ INSERT INTO `users` (`id`, `name`, `work_center_id`, `entry_date`) VALUES
 
 CREATE TABLE `work_centers` (
   `id` int(11) NOT NULL,
-  `name_work` varchar(255) DEFAULT NULL
+  `name_work` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -61,12 +65,12 @@ CREATE TABLE `work_centers` (
 --
 
 INSERT INTO `work_centers` (`id`, `name_work`) VALUES
-(1, 'Centro de Trabajo A'),
+(1, 'Centro de trabajo A'),
 (2, 'Centro de Trabajo B'),
 (3, 'Centro de Trabajo C'),
-(4, 'Centro de Trabajo B'),
-(5, 'Centro de Trabajo C'),
-(6, 'Centro de Trabajo B');
+(4, 'Centro de Trabajo D'),
+(5, 'Centro de Trabajo E'),
+(6, 'Centro de Trabajo F');
 
 --
 -- Índices para tablas volcadas
@@ -93,7 +97,7 @@ ALTER TABLE `work_centers`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `work_centers`
